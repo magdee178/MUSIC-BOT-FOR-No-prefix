@@ -1,0 +1,22 @@
+{
+  "TOKEN": "MTIwMzY0NjYxOTUyMjgzNDQ1Mg.GfZRL1.IPFzQ8EuWI7m49jDTiluIPg3Lxz0vHAsd-4ZJU", 
+  "PREFIX": ".", 
+  "OWNERS": ["1173547185758015498"], 
+  "log": "1198586029343518820", 
+  "MONGODB_URI": "mongodb+srv://pee33:wnn99e@cluster0.fgivnid.mongodb.net/?retryWrites=true&w=majority", 
+  "SPOTIFY_CLIENT_ID": "bf5ee2a72bae40ffadc71a47280e5ff9", 
+  "SPOTIFY_CLIENT_SECRET": "053469ffeb3844079fab734ebf3090c2", 
+  "KSOFT_API_KEY": "AIzaSyAAg3GHxipuyDz7KsCAv434yoFT56TR9LQ", 
+  "NODES": [{
+     "HOST": "lava.link", 
+     "PASSWORD": "kronix", 
+     "PORT": 80, 
+     "IDENTIFIER": "TEC", 
+     "RETRY_AMOUNT": 50,
+     "RETRY_DELAY": 1000,
+     "SECURE": false
+   }],
+  "AUTO_RESUME_DELAY": 1500,
+  "DEBUG": true,
+  "LOG_USAGE": true
+}
