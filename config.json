@@ -1,8 +1,8 @@
 {
-  "TOKEN": "MTIwMzY0NjYxOTUyMjgzNDQ1Mg.GfZRL1.IPFzQ8EuWI7m49jDTiluIPg3Lxz0vHAsd-4ZJU", 
+  "TOKEN": "", 
   "PREFIX": ".", 
-  "OWNERS": ["1173547185758015498"], 
-  "log": "1198586029343518820", 
+  "OWNERS": [""], 
+  "log": "", 
   "MONGODB_URI": "mongodb+srv://pee33:wnn99e@cluster0.fgivnid.mongodb.net/?retryWrites=true&w=majority", 
   "SPOTIFY_CLIENT_ID": "bf5ee2a72bae40ffadc71a47280e5ff9", 
   "SPOTIFY_CLIENT_SECRET": "053469ffeb3844079fab734ebf3090c2", 
