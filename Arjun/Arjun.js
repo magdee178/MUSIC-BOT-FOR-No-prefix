@@ -73,7 +73,7 @@ class Koushikcodez extends Client {
 
     async login() {
         if (!TOKEN) throw new RangeError('You must include TOKEN to login either in config.json or env')
-        await super.login(TOKEN)
+        await super.login(process.env.TOKEN || TOKEN)
             .then(x => {
                 return x
             })
