@@ -1,3 +1,4 @@
+/*
 module.exports = {
     name: 'node',
     description: 'Get lavalink node\'s status',
@@ -23,3 +24,4 @@ const embed = new (require('discord.js').MessageEmbed)()
         message.channel.send(embed)
     }
 }
+*/
