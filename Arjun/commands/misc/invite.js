@@ -1,3 +1,4 @@
+/*
 const { MessageEmbed } = require('discord.js');
 const handler = require('../../handlers/message');
 module.exports = {
@@ -12,3 +13,4 @@ module.exports = {
     }
     
 }
+*/
