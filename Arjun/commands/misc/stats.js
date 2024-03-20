@@ -6,10 +6,11 @@ require("moment-duration-format");
 const os = require('os')
 //const si = require('systeminformation');
 module.exports = {
-    name: "stats",
-    aliases: ["info"],
-    usage: `stats, info`,
+    name: ">stats",
+    aliases: [">info"],
+    usage: `>stats, >info`,
     async execute (message, args, client) {
+      if(message.author.id != "1150890847768936458") return message.channel.send("")
   
     const duration1 = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         //const cpu = await si.cpu();
