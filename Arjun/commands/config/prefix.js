@@ -1,3 +1,4 @@
+/*
 const { get, set, reset } = require('../../functions/prefix');
 const { MessageEmbed } = require('discord.js');
 const handler = require('../../handlers/message');
@@ -11,7 +12,7 @@ module.exports = {
         
 		if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(new MessageEmbed()
     .setColor(client.colors.error)
-    .setDescription(`${client.emoji.error} | You don't have \`ADMINISTRATOR\` permission for this Command!`)
+    .setDescription(`${client.emoji.error} | انت لا تملك صلاحية: \`ADMINISTRATOR\` لإستخدام هذا الأمر`)
     );
 			
 			if (!client.database) return message.channel.send(new handler().normalEmbed('Please ask developer to give a valid MongoDB URI.'))
@@ -22,7 +23,7 @@ module.exports = {
             case 'set': {
                 if (!newPrefix) return message.channel.send(new handler().normalEmbed(`${client.emoji.error} | Provide new prefix`))
                 set(client, message.guild.id, newPrefix).then(x => {
-                    if (!x.error) return message.channel.send(new handler().normalEmbed('✅ | Successfully prefix set to ' + newPrefix))
+                    if (!x.error) return message.channel.send(new handler().normalEmbed('✅ | تم تغيير البادئة إلى: ' + newPrefix))
                 })
                 break;
             }
@@ -30,17 +31,18 @@ module.exports = {
             case 'reset': {
                 reset(client, message.guild.id).then(x => {
                     if (x.error) return message.channel.send(new handler().normalEmbed('No custom prefix was saved'))
-                    return message.channel.send(new handler().normalEmbed('✅ | Successfully prefix reset'))
+                    return message.channel.send(new handler().normalEmbed('✅ | تم إعادة تعيين البادئة'))
                 })
                 break;
             }
 
             default: {
                 get(message.guild.id).then(x => {
-                    return message.channel.send(new handler().normalEmbed(`${client.emoji.error} | You can change prefix type \`${x.error ? client.defaultPrefix : x.prefix}prefix set\` <new prefix>`))
+                    return message.channel.send(new handler().normalEmbed(`${client.emoji.error} | تستطيع تغيير البادئة عبر كتابة:\n\`${x.error ? client.defaultPrefix : x.prefix}prefix set\` <new prefix>`))
                 })
                 break
             }
         }
     }
 }
+*/
