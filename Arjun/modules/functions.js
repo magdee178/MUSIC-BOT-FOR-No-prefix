@@ -135,4 +135,5 @@ async function swap_pages2(client, message, embeds) {
       await reaction.users.remove(message.author.id);
     } catch {}
   });
-}
+      }
+                                      
