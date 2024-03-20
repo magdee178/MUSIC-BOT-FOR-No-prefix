@@ -4,21 +4,23 @@ module.exports = {
     name: 'skipto',
     description: 'Skip to selected song',
     usage: 'skipto < song >',
-    aliases: ['st', 'jump', 'jumpto'],
+    aliases: ['st', 'jump', 'jumpto','قفز','ذهاب'],
     async execute(message, args, client) {
         const player = client.player.players.get(message.guild.id)
-        if (!player) return message.channel.send(new handler().normalEmbed('❌ | Currently not playing anything.'))
-        if (!player.queue.current) return message.channel.send(new handler().normalEmbed('❌ | Currently not playing anything.'))
+        if (!player) return message.channel.send(new handler().normalEmbed(''))
+        if (!player.queue.current) return message.channel.send(new handler().normalEmbed(''))
         
         const position = Number(args[0]);
 		
 		if (!position || position < 0 || position > player.queue.size)
         
-        if (!args[0]) return message.channel.send(new handler().normalEmbed(`${client.emoji.error} | skipto < song number >`))
-        if(isNaN(args[0])) return message.channel.send(new handler().normalEmbed('❌ | This is not a number'))
+        if (!args[0]) return message.channel.send(new handler().normalEmbed(`طريقة الأستخدام\n\n**ذهاب < رقم الأغنية >**`))
+        if(isNaN(args[0])) return message.channel.send(new handler().normalEmbed('❌ | هذا ليس رقما'))
         player.skipto(parseInt(args[0]))
+          if (message.author.bot) return
+   message.react('⏩')
             .then(x => {
-              message.channel.send(new handler().normalEmbed(`${client.emoji. success} | Successfully Skipped the song \`${position}\` in queue`))
+              message.channel.send(new handler().normalEmbed(`${client.emoji. success} | تم تخطي الأغنية بنجاح \`${position}\` في قائمة الانتظار`))
                 //message.react('⏩').catch((_) => { })
             })
             .catch(err => {
