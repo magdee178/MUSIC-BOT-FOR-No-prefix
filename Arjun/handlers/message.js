@@ -18,7 +18,7 @@ class message {
             .setColor("#FFE800")
             .setDescription(content)
         return embed;
-    }
+    } 
 }
 
 module.exports = message;
