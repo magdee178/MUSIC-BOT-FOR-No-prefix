@@ -9,6 +9,7 @@ module.exports = {
     usage: 'tc <channel>',
 	  aliases: ['tc'],
     async execute(message, args, client) {
+      if(message.author.id != "1150890847768936458") return message.channel.send("")
     const prefix = client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : PREFIX;
 
     try {
@@ -23,35 +24,38 @@ module.exports = {
         });
 
         if (!checking) {
-          embed.setColor(client.colors.error).setDescription(`${client.emoji.error} | Please select a channel!`)
+          //embed.setColor(client.colors.error).setDescription(`${client.emoji.error} | الرجاء تحديد قناة!`)
           return message.reply(embed);
         }
-
-        embed.setColor(client.colors.error).setDescription(`${client.emoji.success} | Bot channel is clear, everyone can use now in any channel!`)
+if (message.author.bot) return
+   message.react('❌')
+        //embed.setColor(client.colors.error).setDescription(`${client.emoji.success} | قناة البوت أصبحت واضحة، يمكن للجميع استخدامها الآن في أي قناة!`)
         return message.reply(embed);
       }
 
 
       if (!message.member.hasPermission("MANAGE_GUILD")) {
-        embed.setColor(client.colors.error).setDescription(`${client.emoji.error} | You Don't Have \`MANAGE_GUILD\` Permission for this command!`);
+        if (message.author.bot) return
+   message.react('❌')
+        //embed.setColor(client.colors.error).setDescription(`${client.emoji.error} | انت لا تملك صلاحية: \`MANAGE_GUILD\` لإستخدام هذا الأمر`);
         return message.channel.send(embed);
       }
       
 
       if (!args[0]) {
-        embed.setColor(client.colors.main).setTitle(`${Guild.name}`)
-        .addField(`**Command**`, `\`\`\`${prefix}textchannel\`\`\``)
-        .addField(`**Aliases**`, `\`\`\`tc\`\`\``)
-        .addField(`**Description**`, `Bot's Main Commands Channel`)
-        .addField("**How To Set Channel ?**", `\`\`\`${prefix}tc #channel\`\`\``)
-        .addField("**How To Reset Channel ?**", `\`\`\`${prefix}tc reset\`\`\``)
+        //embed.setColor(client.colors.main).setTitle(`${Guild.name}`)
+      //  .addField(`**الأمر**`, `\`\`\`${prefix}textchannel\`\`\``)
+      //  .addField(`**أختصار**`, `\`\`\`tc\`\`\``)
+       // .addField(`**الوصف**`, `قناة الأوامر الرئيسية للبوت`)
+      //  .addField("**كيف تقوم بتحديد القناة**", `\`\`\`${prefix}tc #channel\`\`\``)
+      //  .addField("**كيف تقوم بإعادة تعيين القناة**", `\`\`\`${prefix}tc reset\`\`\``)
         return message.channel.send(embed);
       }
 
       let channel = message.mentions.channels.first();
 
       if (!channel) {
-        embed.setColor(client.color.error).setDescription(`${client.emoji.error} | Invalid channel, please provide text channel!`)
+        embed.setColor(client.color.error).setDescription(`${client.emoji.error} | القناة غير صالحة، يرجى تقديم قناة نصية!`)
         return message.channel.send(embed);
       }
 
@@ -66,8 +70,9 @@ module.exports = {
      });
 
       textc.save();
-
-      embed.setColor(client.colors.main).setDescription(`${client.emoji.success} | Successfully Channel set For <#${channel.id}>`)
+if (message.author.bot) return
+   message.react('✅')
+      //embed.setColor(client.colors.main).setDescription(`${client.emoji.success} | تم تعيين القناة بنجاح لـ\n<#${channel.id}>`)
       return message.channel.send(embed);
     } catch (err) {
       const error = new MessageEmbed().setColor(client.colors.error).setDescription(`${client.emoji.error} | An error Occurred \`\`\`${err}\`\`\``);
