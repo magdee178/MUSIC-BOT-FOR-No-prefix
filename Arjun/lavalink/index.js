@@ -91,11 +91,18 @@ class lavalink extends Manager {
             const channel = client.channels.cache.get(player.textChannel);
             const guild = client.guilds.cache.get(player.guild)
             const playEmbed = new MessageEmbed()
-                
-                .setDescription(`😎 **__Started Playing__** \n\n ${track ? `**[${track.title}](${player.queue.current.uri}) \n\n 💠 __Publisher__ = ${track.author} \n 💠 __Duration__ = ${track.duration} seconds \n 💠 __Requested__ = ${track.requester}**` : 'Unknown. Please skip or skipto to bring back current track'}`)
-                .setFooter(`Nopru Music`)
+              .setAuthor('🎵Playing song')
+              .setTitle('Song Name')
+
+  .setDescription(`_Started:_ **[${track.title}](${track.uri})**`)
+              .addField(`**Song Duration**`, `\`${track.isStream ? '◉ LIVE' : `${new Date(track.duration).toISOString().slice(11, 19)}`}\``)
+    .setThumbnail('https://cdn.discordapp.com/attachments/1209398050074796042/1219862898873077770/Picsart_24-03-20_06-09-39-451.png?ex=660cd8db&is=65fa63db&hm=58ed6faca9469e5ed7e3237660ce8399f3ebc3ae8acb4642a42539303b742416&')
+    .setFooter(client.user.username, client.user.displayAvatarURL())
+              //.setFooter(`Requsted By: ${track.requester.tag}`, track.requester.displayAvatarURL({dynamic: true}))
+  //.setDescription(`😎 **__Started Playing__** \n\n ${track ? `**[${track.title}](${player.queue.current.uri}) \n\n 💠 __Publisher__ = ${track.author} \n 💠 __Duration__ = ${track.duration} seconds \n 💠 __Requested__ = ${track.requester}**` : 'Unknown. Please skip or skipto to bring back current track'}`)
+                //.setFooter(`Nopru Music`)
                 .setColor(client.colors.main)
-                .setThumbnail(player.queue.current?.thumbnail ? player.queue.current?.thumbnail : '')
+                //.setThumbnail(player.queue.current?.thumbnail ? player.queue.current?.thumbnail : '')
             channel.send({embed: playEmbed}).then(msg => player.set('message', msg))
             return client.playerHandler.savePlayer(player)
         })
@@ -116,7 +123,7 @@ class lavalink extends Manager {
             const guild = client.guilds.cache.get(player.guild)
             const playEmbed = new MessageEmbed()
                 .setAuthor("Stuck")
-                .setDescription(`❌ | There was an error while playing **${track.title}** \n\`\`\`${payload.type}\`\`\``)
+                .setDescription(`❌ | حدث خطأ أثناء تشغيل **${track.title}** \n\`\`\`${payload.type}\`\`\``)
                 .setColor(client.colors.error)
             channel.send({embed: playEmbed}).then(msg => player.set('stuck', msg))
             if (player.get('nowplaying')) {
@@ -153,7 +160,7 @@ class lavalink extends Manager {
                 const err = payload.exception ? `Severity: ${payload.exception.severity}\nMessage: ${payload.exception.message}\nCause: ${payload.exception.cause}` : ''
                 const errorEmbed = new MessageEmbed()
                     .setAuthor("Error")
-                    .setDescription(`❌ | There was an error while playing **${track.title}** \n\`\`\`${err ? err : 'No error was provided from host'}\`\`\``)
+                    .setDescription(`❌ | حدث خطأ أثناء تشغيل **${track.title}** \n\`\`\`${err ? err : 'لم يتم توفير أي خطأ من المضيف'}\`\`\``)
                     .setColor(client.colors.error)
                 channel.send({embed: errorEmbed}).then(msg => player.set('error', msg))
                 if (player.get('nowplaying')) {
@@ -170,7 +177,8 @@ class lavalink extends Manager {
             const guild = client.guilds.cache.get(player.guild)
             const noQueueEmbed = new MessageEmbed()
                 
-       .setAuthor(`Queue Concluded`)         .setDescription(`Queue more songs to keep the party going`)
+       //.setAuthor(`Queue Concluded`)
+              .setDescription(``)
                 .setColor(client.colors.error)
             if (player.get('nowplaying')) {
                 clearInterval(player.get('nowplaying'));
