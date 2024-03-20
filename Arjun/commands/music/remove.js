@@ -1,3 +1,4 @@
+/*
 const handler = require('../../handlers/message');
 
 module.exports = {
@@ -17,3 +18,4 @@ module.exports = {
         return message.channel.send(new handler().normalEmbed(`${client.emoji.success} | Removed the song`))
     }
 }
+*/
