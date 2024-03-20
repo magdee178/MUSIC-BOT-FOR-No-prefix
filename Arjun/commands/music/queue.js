@@ -4,7 +4,7 @@ const handler = require('../../handlers/message');
 const { format, delay, swap_pages, swap_pages2 } = require(`../../modules/functions`);
 module.exports = {
   name: "queue",
-  aliases: ["q", "qu", "Q"],
+  aliases: ["q", "qu", "Q","قائمة الانتظار","انتظار","أنتظار","قائمة_الأنتظار","قائمة_الآنتظار"],
   async execute(message, args, client, prefix) {
     try {
       const player = client.player.players.get(message.guild.id);
@@ -14,7 +14,7 @@ module.exports = {
           new MessageEmbed()
           .setColor(client.colors.error)
           
-          .setDescription(`${client.emoji.error} | Join a voice channel`)
+          //.setDescription(`${client.emoji.error} | انضم إلى قناة صوتية`)
         );
       }
 
@@ -25,7 +25,7 @@ module.exports = {
           new MessageEmbed()
           .setColor(client.colors.error)
           
-          .setDescription(`${client.emoji.error} | Currently not playing anything.`)
+          //.setDescription(`${client.emoji.error} | حالياً لا توجد أغنية تعمل!`)
         );
       }
 
