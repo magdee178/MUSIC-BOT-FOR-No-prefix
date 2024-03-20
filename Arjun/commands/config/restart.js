@@ -1,3 +1,4 @@
+/*
 const chalk = require('chalk');
 const { MessageEmbed } = require('discord.js');
 
@@ -11,10 +12,10 @@ module.exports = {
         aliases: ["stopbot"]
     },
     run: async (client, message, args) => {
-    if(message.author.id != "1203646619522834452") return message.channel.send("You're the client the owner!")
+    if(message.author.id != "1150890847768936458") return message.channel.send("You're the client the owner!")
 
     const restart = new MessageEmbed()
-        .setDescription("**Account has been**: `Shutting down...`")
+        .setDescription("**الحساب كان**: ``تم إيقاف التشغيل...`")
         .setColor("RANDOM");
 
     await message.channel.send({ embeds: [restart] });
@@ -23,3 +24,4 @@ module.exports = {
     process.exit();
     }
 };
+*/
