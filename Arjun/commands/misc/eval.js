@@ -1,3 +1,4 @@
+/*
 const { MessageEmbed, splitMessage } = require('discord.js');
 const paginator = require('../../modules/paginator');
 
@@ -49,3 +50,4 @@ module.exports = {
         else return text;
     }
 }
+*/
