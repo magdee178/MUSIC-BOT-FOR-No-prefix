@@ -1,9 +1,9 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-    name: 'ping',
+    name: '>ping',
     description: 'Get bot\'s ping',
-    usage: 'ping',
+    usage: '>ping',
     async execute(message, args, client) {
         let embed = new MessageEmbed()
             .setAuthor('🏓 Pinging')
@@ -34,8 +34,8 @@ module.exports = {
     }
 }
 
-
-/*const { MessageEmbed } = require('discord.js')
+/*
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: 'ping',
@@ -50,4 +50,5 @@ Gateway Latency: ${latency}ms
 \`\`\``));                     
 
 		}
-}*/
+}
+*/
