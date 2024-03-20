@@ -1,3 +1,4 @@
+/*
 const handler = require('../../handlers/message');
 
 module.exports = {
@@ -25,3 +26,4 @@ module.exports = {
         }
     }
 }
+*/
