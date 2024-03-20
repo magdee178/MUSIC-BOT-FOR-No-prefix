@@ -1,3 +1,4 @@
+/*
 const handler = require('../../handlers/message');
 const { KSOFT_API_KEY } = new (require('../../modules/ArjunUtils'))();
 const { MessageEmbed } = require('discord.js');
@@ -139,3 +140,4 @@ module.exports = {
     }
 
 }
+*/
