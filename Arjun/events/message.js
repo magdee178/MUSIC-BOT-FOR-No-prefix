@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { PREFIX, LOG_USAGE } = new (require('../modules/ArjunUtils'))();
+const handler = require('../handlers/message');
 const chalk = require('chalk');
 
 
@@ -21,12 +22,11 @@ module.exports = {
         
         let intro = new MessageEmbed()
             
-            .setDescription(`**› My prefix in this server is** \`${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : PREFIX}\`
-**› You can see my all commands type \`${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : PREFIX}help\`**
-**› Nopru Music**`)
+            .setDescription(`**> انا اعمل بدون بادئة.**\n**__اشهر اوامري__**\n- شغل • وقف • تشغيل • توقيف • صوت`)
+          .setFooter(client.user.username, client.user.displayAvatarURL())
             .setColor('RANDOM')
         if (message.content == `<@!${client.user.id}>` || message.content == `<@${client.user.id}>`) {
-            if (!message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return message.member.send(`${client.emoji.error} I need this \`SEND_MESSAGES\` permission.`).catch((_) => { })
+            if (!message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return message.member.send(`${client.emoji.error} انا أحتاج هذه الصلاحية: \`SEND_MESSAGES\``).catch((_) => { })
             return message.channel.send(intro)
         }
 
@@ -53,7 +53,7 @@ module.exports = {
             command = client.commands.get(commandName) || client.commands.find(x => x.aliases && x.aliases.includes(commandName));
         }
         if (!command) return;
-        if (!message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return message.member.send(`${client.emoji.error} | I need this \`SEND_MESSAGES\` permission.`).catch((_) => { })
+        if (!message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return message.member.send(`${client.emoji.error} | انا أحتاج هذه الصلاحية: \`SEND_MESSAGES\``).catch((_) => { })
         
         
        
@@ -69,8 +69,11 @@ module.exports = {
         }
 
         if (message.channel.id !== isTextChannel.ChannelId && isChannelExist) {
-          const errEmbed = new MessageEmbed().setColor(client.colors.error).setDescription(`${client.emoji.error} | Please Use My Commands in <#${isTextChannel.ChannelId}>`);
-          return message.channel.send(errEmbed);
+          return
+         const embed = new MessageEmbed()
+           .setColor('RANDOM')
+           .setDescription(``);
+        //  return message.channel.send(new handler().normalEmbed(''));
         }
       }
 
@@ -84,7 +87,7 @@ module.exports = {
                 .setDescription(`${client.emoji.error} | Sorry, there was an error while executing **${command.name}**\n\`\`\`${err}\`\`\``)
                 .setColor(client.colors.error)//client.guilds.cache.get(message.guild.id).me.displayHexColor != '#000000' ? client.guilds.cache.get(message.guild.id).me.displayHexColor : '#00C7FF')
                 
-            client.channels.cache.get(client.config.log).send(errorEmbed)
+            //client.channels.cache.get(client.config.log).send(errorEmbed)
            client.logger.error(err)
         }
     }
