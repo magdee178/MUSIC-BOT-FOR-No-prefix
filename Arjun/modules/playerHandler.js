@@ -156,4 +156,4 @@ module.exports = class AlpinePlayerHandler {
         if (!this.client.database) return;
         return id ? await autoResume.findOneAndRemove({playerID: id}) : await autoResume.findOneAndRemove({guildID});
     }
-}
+			 }
