@@ -6,29 +6,33 @@ const fs = require('fs');
 const { join } = require("path");
 
 module.exports = {
-    name: 'help',
-    aliases: ['h'],
+    name: '>help',
+    aliases: ['>h'],
     description: 'List all available commands',
     usage: 'help [command name]',
     async execute(message, args, client) {
           try {
             if (!args[0]) {
                 let helpEmbed = new MessageEmbed()
-                    .setAuthor(`TEC's Help Menu`,client.user.displayAvatarURL())
+                    .setAuthor(`${message.guild.name}` , client.user.displayAvatarURL())
                     .setColor(client.colors.main)
-.setThumbnail(client.user.displayAvatarURL())                  .setDescription(`❤️ **__[TEC Music](https://discord.com/oauth2/authorize?client_id=1203646619522834452&scope=bot&permissions=3459136)__  is Built to Deliver the Best Music Experience.\n ❤️ Thanks For Using __[TEC Music](https://discord.com/oauth2/authorize?client_id=1203646619522834452&scope=bot&permissions=3459136)__ !**`)
-                    .setFooter(`Use ${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : client.defaultPrefix}help [command name] to get command information.`)
+  .setThumbnail(message.guild.iconURL({ dynamic: true }))
+//.setThumbnail(client.user.displayAvatarURL())
+                  .setDescription(`> **قائمة المساعدة**\n➥ • [About Me](https://bio.link/magdee)`)
+                  .setImage("https://cdn.discordapp.com/attachments/1209398050074796042/1210006314713874474/standard.gif?ex=6604acb2&is=65f237b2&hm=20a7848ac287b8ff356148dd753814e4000dc869ada17ec53d660a08203e6a6a&")
+      .setFooter(`Requested by :${message.author.username}`,message.author.displayAvatarURL({dynamic: true}))
+              .setTimestamp();
 
                 const commandFolders = fs.readdirSync(join(__dirname, "..", "..", "commands"))
                 let allCategories = []
                 commandFolders.forEach((categories, index) => {
                     const counter = index++ + 1;
-                    allCategories.push(`${counter}. ${categories} \`${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : client.defaultPrefix}help ${categories}\` `)
+                    allCategories.push(`${counter}. ${categories}\` >help ${categories}\` `)
                 });
-                helpEmbed.addField(`➡ __Dev__ [3]`, "`restart`, `reload`, `eval`")
-                helpEmbed.addField(`➡ __Config__ [3]`, "`247`, `prefix`, `textchannel`")
-                helpEmbed.addField(`➡ __Misc__ [5]`, "`invite`, `help`, `ping`, `node`, `stats`")
-                helpEmbed.addField(`➡ __Filters__ [5]`, "`8D`, `bassboost`, `nightcore`, `reset`, `vaporwave`")
+//                helpEmbed.addField(`➡ __Dev__ [3]`, "`restart`, `reload`")
+                //helpEmbed.addField(`➡ __Config__ [2]`, "`247`, `prefix`")
+                //helpEmbed.addField(`➡ __Misc__ [4]`, "`help`, `ping`, `stats`, `247`")
+                //helpEmbed.addField(`➡ __Filters__ [5]`, "`8D`, `bassboost`, `nightcore`, `reset`, `vaporwave`")
                 helpEmbed.addField(`➡ __Music__ [18]`, "`autoplay`, `play`, `join`, `leave`, `loop`, `move`, `nowplaying`, `pause`, `clear`, `queue`, `remove`, `resume`, `shuffle`, `skip`, `skipto`, `seek`, `stop`, `volume`")
                
                 
@@ -36,15 +40,15 @@ module.exports = {
                 let invbutton2 = new MessageButton()
                 .setStyle('url')
                 .setLabel('Invite Me')
-                .setURL('https://discord.com/api/oauth2/authorize?client_id=1203646619522834452&permissions=66452289&scope=bot')
+                .setURL('')
                 let invbutton4 = new MessageButton()
                 .setStyle('url')
                 .setLabel('Vote')
-                .setURL('https://discord.gg/7uhXutc9Sr')
+                .setURL('https://discord.com/invite/R3jxmNZEUB')
                 let invbutton3 = new MessageButton()
                 .setStyle('url')
-                .setLabel('Support')
-                .setURL('https://discord.gg/7uhXutc9Sr');
+                .setLabel('Support Server')
+                .setURL('https://discord.com/invite/R3jxmNZEUB');
                 
                  return message.channel.send(helpEmbed);
                  return message.channel.send({ embed: helpEmbed , button: [invbutton2 , invbutton3
@@ -55,7 +59,7 @@ module.exports = {
                 let helpEmbed = new MessageEmbed()
                     .setAuthor('Help', client.user.displayAvatarURL())
                     .setColor(client.colors.main)
-                    .setDescription(`My current prefix in **${message.guild.name}** is \`${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : client.defaultPrefix}\``)
+                    //.setDescription(`My current prefix in **${message.guild.name}** is \`${client.prefixes.get(message.guild.id) ? client.prefixes.get(message.guild.id).prefix : client.defaultPrefix}\``)
 
                 let commandFile, category, error;
                 try {
@@ -83,4 +87,4 @@ module.exports = {
             message.channel.send(new handler().normalEmbed(`Error! ${err}`))
   }  
     }  
-}
+                            }
