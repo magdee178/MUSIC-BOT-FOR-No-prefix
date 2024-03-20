@@ -1,3 +1,4 @@
+/*
 const command = require('../../handlers/command');
 //const handlers = require('../../handlers/message')
 //const { MessagesEmbed } = require('discord.js')
@@ -11,7 +12,7 @@ module.exports = {
 		
 	
 	async execute(message, args, client) {
-		if (message.author.id !== "1203646619522834452" ) return;
+		if (message.author.id !== "1150890847768936458" ) return;
 		if (!args[1]) return message.channel.send(`Please provide a command.`);
 
 		const commandName = args[1].toLowerCase();
@@ -19,7 +20,7 @@ module.exports = {
 			|| message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 		if (!command) {
-			return message.channel.send(`There is no command with name or alias \`${commandName}\`, ${message.author}`);
+			return message.channel.send(`لا يوجد أمر بالاسم أو الاسم المستعار \`${commandName}\`, ${message.author}`);
 		}
 
 		delete require.cache[require.resolve(`../${args[0]}/${commandName}.js`)];
@@ -30,8 +31,9 @@ module.exports = {
 		}
 		catch (error) {
 			client.log(error);
-			return message.channel.send(`There was an error while reloading a command \`${commandName}\`:\n\`${error.message}\``);
+			return message.channel.send(`حدث خطأ أثناء إعادة تحميل الأمر: \`${commandName}\`:\n\`${error.message}\``);
 		}
-		message.channel.send(`Command \`${commandName}\` was reloaded!`);
+		message.channel.send(`الأمر: \`${commandName}\` تم إعادة تحميل!`);
 	}
 };
+*/
