@@ -4,31 +4,33 @@ module.exports = {
     name: 'stop',
     description: 'Stop playing song',
     usage: 'stop',
-    aliases: ['stop'],
+    aliases: ['stop','وقف','ستوب'],
     async execute(message, args, client) {
         const player = client.player.players.get(message.guild.id);
         
      if (!player) {
-      let embed = new MessageEmbed().setColor(client.colors.error).setDescription(`${client.emoji.error} | Currently not playing anything`);
+      let embed = new MessageEmbed().setColor(client.colors.error).setDescription(``);
       return message.channel.send(embed);
     }
     
 
     const { channel } = message.member.voice;
-    if (!channel) return message.channel.send(new handler().normalEmbed(`${client.emoji.error} | You aren't connected to a voice channel`));
+    if (!channel) return message.channel.send(new handler().normalEmbed(``));
 
     if (channel.id !== player.voiceChannel) {
-      let embed = new MessageEmbed().setColor(client.colors.error).setDescription(`${client.emoji.error} | Must Join The Same Voice Channel`);
+      let embed = new MessageEmbed().setColor(client.colors.error).setDescription(``);
       return message.channel.send(embed);
       
     }
 
     player.stop();
     player.queue.clear();
+      if (message.author.bot) return
+   message.react('⏹️')
     return message.channel.send({
       embed: {
         color: client.colors.success,
-        description: `${client.emoji.success} | Music Has been Stopped `,
+        description: `${client.emoji.success} | لقد تم إيقاف الموسيقى `,
       },
     });
   },
