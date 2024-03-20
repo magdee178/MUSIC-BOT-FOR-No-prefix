@@ -1,3 +1,4 @@
+/*
 const handler = require('../../handlers/message');
 
 module.exports = {
@@ -14,3 +15,4 @@ module.exports = {
         message.channel.send(new handler().normalEmbed(`✅ | Successfully cleared current queue.`))
     }
 }
+*/
